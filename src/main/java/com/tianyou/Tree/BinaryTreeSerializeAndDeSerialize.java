@@ -30,36 +30,6 @@ public class BinaryTreeSerializeAndDeSerialize{
     // Encodes a tree to a single string.
 
     /**
-     *将二叉树序列化为字符串集合
-     * @param root
-     * @return
-     */
-    public List<String> serializeToList(TreeNode root) {
-        List<String> serializeList=new ArrayList<>();
-        serializeList.add(String.valueOf(root.val));
-        if(root!=null){
-            int leftval=root.left.val;
-            int rightval=root.right.val;
-            if(root.left==null){
-                serializeList.add(null);
-            }else {
-                serializeList.add(String.valueOf(leftval));
-            }
-
-            if(root.right==null){
-                serializeList.add(null);
-            }else {
-                serializeList.add(String.valueOf(rightval));
-            }
-            List<String> left=serializeToList(root.left);
-            List<String> right=serializeToList(root.right);
-            serializeList.addAll(left);
-            serializeList.addAll(right);
-        }
-        return serializeList;
-    }
-
-    /**
      * 将二叉树序列化为字符串
      * @param root
      * @return
@@ -68,27 +38,37 @@ public class BinaryTreeSerializeAndDeSerialize{
         if(root==null){
             return null;
         }
+
+        //把树结构序列化为List结构
         List<TreeNode> treeNodeList=new ArrayList<>();
+        //从根节点开始添加
         treeNodeList.add(root);
+        //依次添加树的子节点至List<TreeNode>
         for(int i=0;i<treeNodeList.size();i++){
             if(treeNodeList.get(i)==null){
                 continue;
             }
-
+            //这里对left和right没有做!null判断是因为添加了null值之后我们可能就会遍历到下一个有值的节点了，需要这个null值来标识有值节点的位置
+            //后面会把数组尾巴里的null值都去掉，因为不需要这些null值做节点的定位
             TreeNode left=treeNodeList.get(i).left;
             TreeNode right=treeNodeList.get(i).right;
             treeNodeList.add(left);
             treeNodeList.add(right);
         }
+
+        //去除List<TreeNode>末尾的null值
         while (treeNodeList.get(treeNodeList.size() - 1) == null) {
             treeNodeList.remove(treeNodeList.size() - 1);
         }
 
+        //这里之所以用StringBuilder而不把数据存到list里用List.toString是因为list.toString转化后数字前面会有空格，不方便后面的反序列化
         StringBuilder stringBuilder=new StringBuilder("[");
         stringBuilder.append(treeNodeList.get(0).val);
 
+        //遍历List<TreeNode>结构，用里面的值顺序组装字符串实现序列化
         for(int i=1;i<treeNodeList.size();i++){
             if (treeNodeList.get(i) == null) {
+                //空值用#替代
                 stringBuilder.append(",#");
             } else {
                 stringBuilder.append("," + treeNodeList.get(i).val);
@@ -139,6 +119,7 @@ public class BinaryTreeSerializeAndDeSerialize{
             if(!isLeft){
                 Index++;
             }
+            //左右交替添加子节点
             isLeft=!isLeft;
         }
         return treeNodeList.get(0);
