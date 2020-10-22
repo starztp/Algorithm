@@ -33,6 +33,31 @@ public class Exercise {
         }
     }
 
+    public int minPath2(int[][] matrix){
+        return process2(matrix,matrix[0].length-1);
+    }
+
+
+    public static int process2(int[][] matrix,int i){
+        if(i==0){
+            return 0;
+        }else {
+            //默认1000
+            int distance=1000;
+            for(int j=0;j<i;j++){
+
+                if(matrix[i][j]!=0){
+                    //先反向递归到A,再从A到G
+                    int dstancetmp=matrix[j][i]+process2(matrix,j);
+                    if(dstancetmp<distance){
+                        distance=dstancetmp;
+                    }
+                }
+            }
+            return distance;
+        }
+    }
+
 
     public String getMaxSubString(String str,String str1){
         if(str.isEmpty()||str==null||str1.isEmpty()||str1==null){
