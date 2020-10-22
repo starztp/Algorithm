@@ -45,8 +45,8 @@ public class Exercise {
             //默认1000
             int distance=1000;
             for(int j=0;j<i;j++){
-
-                if(matrix[i][j]!=0){
+                //因为没有第15行，所以用matrix[j][i]，而不是matrix[i][j],否则会数组越界
+                if(matrix[j][i]!=0){
                     //先反向递归到A,再从A到G
                     int dstancetmp=matrix[j][i]+process2(matrix,j);
                     if(dstancetmp<distance){
