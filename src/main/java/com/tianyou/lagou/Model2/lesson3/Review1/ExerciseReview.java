@@ -1,6 +1,6 @@
-package com.tianyou.lagou.Model2.lesson3;
+package com.tianyou.lagou.Model2.lesson3.Review1;
 
-public class Exercise {
+public class ExerciseReview {
 
     /**
      * 翻转数组
@@ -10,7 +10,6 @@ public class Exercise {
     public int[] rotateArray(int[] array){
         int start=0;
         int end=array.length-1;
-        int mid=start+(end-start)/2;
         while (start<end){
             int temp=array[start];
             array[start]=array[end];
