@@ -1,8 +1,8 @@
-package com.tianyou.JavaP5VIP.DynamicProgramming;
+package com.tianyou.JavaP5VIP.DynamicProgramming.Review2;
 
 import java.util.Arrays;
 
-public class UniquePaths {
+public class UniquePathsReview {
 
     /**
      * 一个机器人位于一个 m x n 网格的左上角 （起始点在下图中标记为“Start” ）。
@@ -38,19 +38,15 @@ public class UniquePaths {
      * @param n
      * @return
      */
-    public int uniquePaths(int m, int n) {
-        //定义矩阵竖排
-        int[] cur = new int[n];
-        //矩阵第一列的值都是1
-        Arrays.fill(cur,1);
-        //因为矩阵第1行和第1列的值都是1，所以从第2行和第2列开始循环
-        for (int i = 1; i < m;i++){
-            for (int j = 1; j < n; j++){
-                cur[j] += cur[j-1] ;
+    public int uniquePaths(int m, int n){
+
+        int[] col=new int[n];
+        Arrays.fill(col,1);
+        for(int i=1;i<m;i++){
+            for(int j=1;j<n;j++){
+                col[j]+=col[j-1];
             }
         }
-        return cur[n-1];
+        return col[col.length-1];
     }
-
-
 }

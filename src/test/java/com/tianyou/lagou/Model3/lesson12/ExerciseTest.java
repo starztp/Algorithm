@@ -1,6 +1,5 @@
-package com.tianyou.lagou.Model2.lesson12;
+package com.tianyou.lagou.Model3.lesson12;
 
-import com.tianyou.lagou.Model3.lesson12.Exercise;
 import org.junit.Test;
 
 public class ExerciseTest {

@@ -1,6 +1,5 @@
-package com.tianyou.lagou.Model2.lesson11;
+package com.tianyou.lagou.Model3.lesson11;
 
-import com.tianyou.lagou.Model3.lesson11.Exercise;
 import org.junit.Test;
 
 import java.util.ArrayList;
