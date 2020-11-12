@@ -63,7 +63,9 @@ public class Palindrome {
             //针对字符个数为偶数时才需要+1
             int len2 = expandAroundCenter(s, i, i + 1);
             int len = Math.max(len1, len2);
+            //如果以当前字符为中心扩展的回文长度大于之前的回文串长度，则重新定义回文串的起始和结束字符下标
             if (len > end - start) {
+                //这里先做len-1而不是len/2-1是因为len/2-1的结果可能是负数
                 start = i - (len - 1) / 2;
                 end = i + len / 2;
             }
@@ -71,12 +73,49 @@ public class Palindrome {
         return s.substring(start, end + 1);
     }
 
+    //求以当前字符串为中心扩展的回文串的长度
     public int expandAroundCenter(String s, int left, int right) {
         while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
             --left;
             ++right;
         }
+        //因为最后一次计算会出现--left<0或者++right>s.length的情况，所以要-1
         return right - left - 1;
     }
+
+
+    /**
+     * 自己手写版本
+     * @param s
+     * @return
+     */
+    public String longestPalindrome3(String s){
+        if (s == null || s.isEmpty()) {
+            return "";
+        }
+
+        int start=0;
+        int end=0;
+        for(int i=0;i<s.length();i++){
+            int len=getPalindromelength(s,i,i);
+            int len1=getPalindromelength(s,i,i+1);
+            len=Math.max(len,len1);
+            if(len>end-start){
+                start=i-(len-1)/2;
+                end=i+len/2;
+            }
+        }
+        return s.substring(start,end+1);
+    }
+
+
+    public int getPalindromelength(String s,int left,int right){
+        while (left>=0&&right<s.length()&&s.charAt(left)==s.charAt(right)){
+            --left;
+            ++right;
+        }
+        return right-left-1;
+    }
+
 
 }

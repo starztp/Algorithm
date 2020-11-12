@@ -9,7 +9,7 @@ public class PalindromeTest {
     @Test
     public void TestlongestPalindrome(){
         String s= "babad";
-        String maxSubString=palindrome.longestPalindrome2(s);
+        String maxSubString=palindrome.longestPalindrome3(s);
         System.out.println(maxSubString);
     }
 }
