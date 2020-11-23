@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+//暂时理解不了，先放着
 public class AllSort {
 
     /**
