@@ -12,4 +12,11 @@ public class PalindromeTest {
         String maxSubString=palindrome.longestPalindrome3(s);
         System.out.println(maxSubString);
     }
+
+    @Test
+    public void TestisPalindrome(){
+        int x=100;
+        boolean result=palindrome.isPalindrome(x);
+        System.out.println(result);
+    }
 }
