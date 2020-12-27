@@ -47,7 +47,8 @@ public class MergeInterval {
             if(returnvalue.size()==0||intervals[i][0]>returnvalue.get(returnvalue.size()-1)[1]){
                 returnvalue.add(intervals[i]);
             }else {
-                returnvalue.get(returnvalue.size()-1)[1]=intervals[i][1];
+                //因为存在[[1,4],[2,3]]这样的情况，所以要取大的右边区间
+                returnvalue.get(returnvalue.size()-1)[1]=Math.max(intervals[i][1],returnvalue.get(returnvalue.size()-1)[1]);
             }
         }
 
