@@ -73,11 +73,13 @@ public class GenerateParenthesis {
             ans.add(cur.toString());
             return;
         }
+        //左括号小于n时添加左括号
         if (open < max) {
             cur.append('(');
             backtrack(ans, cur, open + 1, close, max);
             cur.deleteCharAt(cur.length() - 1);
         }
+        //右括号小于左括号的数量添加右括号
         if (close < open) {
             cur.append(')');
             backtrack(ans, cur, open, close + 1, max);
