@@ -104,7 +104,7 @@ public class GenerateParenthesis {
         if(left<maxlength){
             buffer.append("(");
             generate(collection,maxlength,left+1,right,buffer);
-            //直到递归至所有括号都被删除才结束
+            //去掉当前位置的括号重新生成，直到递归至所有括号都被删除才结束
             buffer.deleteCharAt(buffer.length()-1);
         }
 
@@ -112,7 +112,7 @@ public class GenerateParenthesis {
         if(right<left){
             buffer.append(")");
             generate(collection,maxlength,left,right+1,buffer);
-            //直到递归至所有括号都被删除才结束
+            //去掉当前位置的括号重新生成，直到递归至所有括号都被删除才结束
             buffer.deleteCharAt(buffer.length()-1);
         }
     }
