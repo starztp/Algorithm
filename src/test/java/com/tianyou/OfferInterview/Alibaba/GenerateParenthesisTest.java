@@ -17,4 +17,10 @@ public class GenerateParenthesisTest {
         List<String> result= generateParenthesis.generateParenthesis1(3);
         System.out.println(result.toString());
     }
+
+    @Test
+    public void TestgenerateParenthesis2(){
+        List<String> result= generateParenthesis.generateParenthesis2(3);
+        System.out.println(result.toString());
+    }
 }
