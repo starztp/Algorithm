@@ -1,5 +1,7 @@
 package com.tianyou.JavaP5VIP.Sort;
 
+import java.util.Arrays;
+
 public class Sort {
 
     public void QuicklySort(int[] array){
@@ -56,5 +58,6 @@ public class Sort {
 
         //将数组右半边进行排序
         quickSort(array, left, end);
+
     }
 }
