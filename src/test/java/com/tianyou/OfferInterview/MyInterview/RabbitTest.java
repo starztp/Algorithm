@@ -1,0 +1,1 @@
+package com.tianyou.OfferInterview.MyInterview;import com.tianyou.OfferInterview.MyInterview.Rabbit.Rabbit;import org.junit.Test;public class RabbitTest {    Rabbit rabbit=new Rabbit();    @Test    public void TestgetRubbitCount(){        int count=rabbit.getRubbitCount(8);        System.out.println(count);    }}
