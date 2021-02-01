@@ -33,9 +33,9 @@ public class Third {
             }
         }
 
-        for(int i=0;i<map.size();i++){
-            if(map.get(i)==2){
-                list.add(map.get(i));
+        for(int num: map.keySet()){
+            if(map.get(num)==2){
+                list.add(num);
             }
         }
         return list.stream().mapToInt(i->i).toArray();
